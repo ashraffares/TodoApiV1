@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::API
-  SECRETS = 'my$ecretK3y'
+  SECRETS = 'my$ecretK3y'.freeze
+
+  def is_user(user)
+    if user
+      true
+    else
+      render json: { error: 'Wrong token!' }
+    end
+  end
 
   def auth
     token = request.headers[:token]
@@ -7,11 +15,7 @@ class ApplicationController < ActionController::API
       decoded_token = decrypt(token)
       user_id = decoded_token[0]['user_id']
       user = User.find(user_id)
-      if user
-        true
-      else
-        render json: { error: 'Wrong token!' }
-      end
+      is_user(user)
     else
       render json: { error: 'Missing token!' }
     end
