@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   SECRETS = 'my$ecretK3y'.freeze
 
-  def is_user(user)
+  def user?(user)
     if user
       true
     else
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
       decoded_token = decrypt(token)
       user_id = decoded_token[0]['user_id']
       user = User.find(user_id)
-      is_user(user)
+      user?(user)
     else
       render json: { error: 'Missing token!' }
     end
