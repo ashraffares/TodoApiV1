@@ -1,13 +1,11 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::API
   SECRETS = 'my$ecretK3y'
 
   def auth
-    token = request.headers.token
+    token = request.headers[:token]
     if token
       decoded_token = decrypt(token)
-      user_id = decoded_token[0].user_id
+      user_id = decoded_token[0]['user_id']
       user = User.find(user_id)
       if user
         true

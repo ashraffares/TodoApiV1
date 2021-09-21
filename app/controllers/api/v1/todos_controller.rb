@@ -3,6 +3,7 @@
 module Api
   module V1
     class TodosController < ApplicationController
+      before_action :auth
       before_action :set_todo, only: %i[show update destroy]
 
       # GET /todos

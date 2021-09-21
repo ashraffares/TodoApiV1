@@ -3,6 +3,7 @@
 module Api
   module V1
     class ItemsController < ApplicationController
+      before_action :auth
       before_action :set_item, only: %i[show update destroy]
 
       # GET /items
