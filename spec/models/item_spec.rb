@@ -10,4 +10,4 @@ RSpec.describe Item, type: :model do
     it { should validate_length_of(:name).is_at_least(3).with_message('it should be at least 3 character and maximum 25') }
   end
 end
-# rubocop:enable
+# rubocop:enable Layout/LineLength

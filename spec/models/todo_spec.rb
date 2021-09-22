@@ -10,4 +10,4 @@ RSpec.describe Todo, type: :model do
   end
 end
 
-# rubocop:enable
+# rubocop:enable Layout/LineLength
