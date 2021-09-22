@@ -12,6 +12,11 @@ module Api
       end
 
       def registeration
+        p '#######################'
+        p params[:email]
+        p params[:password]
+        p params[:password_confirmation]
+        p '#########################'
         new_user = User.create(email: params[:email], password: params[:password],
                                password_confirmation: params[:password_confirmation])
         if new_user.save
