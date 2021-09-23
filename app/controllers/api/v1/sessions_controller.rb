@@ -12,18 +12,13 @@ module Api
       end
 
       def registeration
-        p '#######################'
-        p params[:email]
-        p params[:password]
-        p params[:password_confirmation]
-        p '#########################'
         new_user = User.create(email: params[:email], password: params[:password],
                                password_confirmation: params[:password_confirmation])
         if new_user.save
           token = encrypt({ user_id: new_user.id })
           render json: { token: token }
         else
-          render json: { error: 'you did something stupid you should not use the app again!' }
+          render json: { error: new_user.errors.full_messages }
         end
       end
     end
