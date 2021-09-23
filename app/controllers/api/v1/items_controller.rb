@@ -20,7 +20,7 @@ module Api
         @item = Item.new(item_params)
 
         if @item.save
-          render json: @item, status: :created, location: @item
+          render json: @item, status: :created
         else
           render json: @item.errors, status: :unprocessable_entity
         end
@@ -29,7 +29,7 @@ module Api
       # PATCH/PUT /items/1
       def update
         if @item.update(item_params)
-          render json: @item
+          render json: @item, status: :ok
         else
           render json: @item.errors, status: :unprocessable_entity
         end

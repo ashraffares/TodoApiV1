@@ -16,7 +16,6 @@ class ApplicationController < ActionController::API
       user_id = decoded_token[0]['user_id']
       user = User.find(user_id)
       user?(user)
-      redirect_to action: 'create'
     else
       render json: { error: 'Missing token!' }
     end
