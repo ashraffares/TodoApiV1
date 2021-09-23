@@ -5,14 +5,13 @@ class ErrorsController < ApplicationController
 
   def internal_server_error
     render json:
-      {  errors: '500 internal_server_error',
-         contact:
-         [
-           { Twitter: 'https://twitter.com/Fares09301164' },
-           { LinkedIn: 'https://www.linkedin.com/in/faresashraf/' },
-           { Github: 'https://github.com/ashraffares' },
-           { Email: 'ashraffares090@gmail.com' }
-         ]
-      }
+      { errors: '500 internal_server_error',
+        contact:
+        [
+          { Twitter: 'https://twitter.com/Fares09301164' },
+          { LinkedIn: 'https://www.linkedin.com/in/faresashraf/' },
+          { Github: 'https://github.com/ashraffares' },
+          { Email: 'ashraffares090@gmail.com' }
+        ] }
   end
 end
