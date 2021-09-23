@@ -18,7 +18,7 @@ module Api
           token = encrypt({ user_id: new_user.id })
           render json: { token: token }
         else
-          render json: { error: 'you did something stupid you should not use the app again!' }
+          render json: { error: new_user.errors.full_messages }
         end
       end
     end
