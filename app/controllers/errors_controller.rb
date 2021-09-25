@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ErrorsController < ApplicationController
   def not_found
     render json: { errors: '404 Not Found Please make sure your in the right route' }

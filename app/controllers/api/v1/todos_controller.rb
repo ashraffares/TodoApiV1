@@ -2,12 +2,13 @@ module Api
   module V1
     class TodosController < ApplicationController
       before_action :auth
-
+      before_action :set_todo, only: %i[show update destroy]
       # GET /todos
       def index
-        @todos = Todo.all
-
-        render json: @todos
+        if current_user
+          @todos = current_user.todos.all
+          render json: @todos
+        end
       end
 
       # GET /todos/1
@@ -49,7 +50,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def todo_params
-        params.require(:todo).permit(:title, :created_by)
+        params.require(:todo).permit(:title, :created_by, :user_id)
       end
     end
   end

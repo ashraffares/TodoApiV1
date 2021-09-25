@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :name
       t.text :description
       t.string :proirity
-      t.boolean :completed
+      t.boolean :completed, default: false
       t.references :todo, null: false, foreign_key: true
 
       t.timestamps

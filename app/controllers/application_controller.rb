@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
-  SECRETS = 'my$ecretK3y'.freeze
+  SECRETS = 'my$ecretK3y'
 
   def user?(user)
     if user
@@ -18,6 +20,15 @@ class ApplicationController < ActionController::API
       user?(user)
     else
       render json: { error: 'Missing token!' }
+    end
+  end
+
+  def current_user
+    token = request.headers[:token]
+    if token
+      decoded_token = decrypt(token)
+      user_id = decoded_token[0]['user_id']
+      User.find(user_id)
     end
   end
 

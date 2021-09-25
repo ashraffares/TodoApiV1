@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_09_25_105858) do
     t.string "name"
     t.text "description"
     t.string "proirity"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.integer "todo_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
