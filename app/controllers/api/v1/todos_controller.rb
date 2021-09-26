@@ -13,7 +13,7 @@ module Api
 
       # GET /todos/1
       def show
-        render json: @todo
+        render json: @todo, status: :ok
       end
 
       # POST /todos
@@ -38,7 +38,11 @@ module Api
 
       # DELETE /todos/1
       def destroy
-        @todo.destroy
+        if @todo.destroy
+          render json: { message: 'Todo has been deleted successfully' }, status: :ok
+        else
+          render json: { error: 'Something went wrong please try again!' }, status: unprocessable_entity
+        end
       end
 
       private

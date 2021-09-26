@@ -40,7 +40,11 @@ module Api
 
       # DELETE /items/1
       def destroy
-        @item.destroy
+        if @item.destroy
+          render json: { message: 'Item has been deleted successfully' }, status: :ok
+        else
+          render json: { error: 'Something went wrong please try again!' }, status: unprocessable_entity
+        end
       end
 
       private
