@@ -41,7 +41,7 @@ module Api
         if @todo.destroy
           render json: { message: 'Todo has been deleted successfully' }, status: :ok
         else
-          render json: { error: 'Something went wrong please try again!' }, status: unprocessable_entity
+          render json: { error: 'Something went wrong please try again!' }, status: :unprocessable_entity
         end
       end
 
