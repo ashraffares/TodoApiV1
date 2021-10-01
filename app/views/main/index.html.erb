@@ -1,3 +1,101 @@
-<section>
-    <h1>Main#Page</h1>
-<section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <title>TodoApi</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to 'TodoApi', root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+  </div>
+</nav>
+
+  <header class="container-fluid text-center bg-primary text-white">
+    <h1 class="display-1">TodoAPI</h1>
+    <p class="display-5">The RESTful TodoAPI API.</p>
+    <div class="text-center bg-dark text-white p-3 rounded">
+    <p class="lead font-weight-bold">TodoAPI everthing you will ever need in one place,</p>
+    <p class="lead font-weight-bold">easily accessible through a modern RESTful API.</p> 
+  </div>
+  </header>
+  <main class="p-3 bg-dark">
+    <hr class="bg-white">
+    <span class="lead text-white">
+       BaseUrl:
+      <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/">"https://vast-eyrie-23535.herokuapp.com/api/v1/"</a>
+    </span>
+    <div class=" text-white p-3">
+    <h6>Login & register example</h6>
+    <pre>
+        url: <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/registeration">BaseUrl/registeration</a><br/>
+        method: 'post',<br>
+        data: {<br/>
+            email: "example@gmail.com",<br/>
+            passowrd: "Example0011$$&&",<br/>
+            password_confirmation: "Example0011$$&&"<br/>
+        }<br/>
+
+        response {<br/>
+            token: tokenExample,<br/>
+        }<br/>
+    </pre>
+    <hr class="bg-white">
+    <pre>
+        url: <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/registeration">BaseUrl/login</a><br/>
+        method: 'post',<br>
+        data: {<br/>
+            email: "example@gmail.com",<br/>
+            passowrd: "Example0011$$&&"<br/>
+        }<br/>
+
+        response {<br/>
+            token: tokenExample,<br/>
+        }<br/>
+    </pre>
+    </div>
+
+
+
+    <div class=" text-white p-3">
+    <h6>Login & register example</h6>
+    <pre>
+        url: <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/todos">BaseUrl/todos/</a><br/>
+        method: 'get',<br>
+        data: {<br/>
+            user_id: 1,<br/>
+            title: "ExampleTitle",<br/>
+            created_by: "ExampleNoOne"<br/>
+        }<br/>
+
+        header {<br/>
+            token: tokenExample,<br/>
+        }<br/>
+
+        response: []
+
+    </pre>
+    <hr class="bg-white">
+    <pre>
+        url: <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/registeration">BaseUrl/todos/:todo_id/items</a><br/>
+        method: 'get',<br>
+        header {<br/>
+            token: tokenExample,<br/>
+        }<br/>
+        response: []
+
+    </pre>
+    </div>
+  </main>
+</body>
+</html>
