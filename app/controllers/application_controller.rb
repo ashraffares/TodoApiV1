@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  SECRETS = 'my$ecretK3y'
+  SECRETS = 'my$ecretK3y'.freeze
 
   def user?(user)
     if user
@@ -20,6 +20,7 @@ class ApplicationController < ActionController::API
       render json: { error: 'Missing token!' }
     end
   end
+  # rubocop:disable Style/GuardClause
 
   def current_user
     token = request.headers[:token]
@@ -29,6 +30,8 @@ class ApplicationController < ActionController::API
       User.find(user_id)
     end
   end
+
+  # rubocop:enable Style/GuardClause
 
   def encrypt(payload)
     JWT.encode payload, SECRETS, 'HS256'
