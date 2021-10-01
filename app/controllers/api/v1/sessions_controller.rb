@@ -5,9 +5,9 @@ module Api
         user = User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
           token = encrypt({ user_id: user.id })
-          render json: { token: token }
+          render json: { token: token }, status: :ok
         else
-          render json: { error: 'invalid user or password' }
+          render json: { error: 'invalid user or password' }, status: :unprocessable_entity
         end
       end
 
@@ -16,9 +16,9 @@ module Api
                                password_confirmation: params[:password_confirmation])
         if new_user.save
           token = encrypt({ user_id: new_user.id })
-          render json: { token: token }
+          render json: { token: token }, status: :ok
         else
-          render json: { error: new_user.errors.full_messages }
+          render json: { error: new_user.errors.full_messages }, status: :unprocessable_entity
         end
       end
     end

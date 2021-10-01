@@ -6,8 +6,8 @@ module Api
 
       # GET /items
       def index
-        @items = Item.all
-
+        @todo = Todo.find(params[:todo_id])
+        @items = @todo.items
         render json: @items
       end
 
@@ -21,7 +21,7 @@ module Api
         @item = Item.new(item_params)
 
         if @item.save
-          render json: @item, status: :created, location: @item
+          render json: @item, status: :created
         else
           render json: @item.errors, status: :unprocessable_entity
         end
@@ -30,7 +30,7 @@ module Api
       # PATCH/PUT /items/1
       def update
         if @item.update(item_params)
-          render json: @item
+          render json: @item, status: :ok
         else
           render json: @item.errors, status: :unprocessable_entity
         end
@@ -38,7 +38,11 @@ module Api
 
       # DELETE /items/1
       def destroy
-        @item.destroy
+        if @item.destroy
+          render json: { message: 'Item has been deleted successfully' }, status: :ok
+        else
+          render json: { error: 'Something went wrong please try again!' }, status: :unprocessable_entity
+        end
       end
 
       private
