@@ -4,12 +4,16 @@ module Api
       before_action :auth
       before_action :set_todo, only: %i[show update destroy]
       # GET /todos
+
+      # rubocop:disable Style/GuardClause
       def index
         if current_user
           @todos = current_user.todos.all
           render json: @todos
         end
       end
+
+      # rubocop:enable Style/GuardClause
 
       # GET /todos/1
       def show

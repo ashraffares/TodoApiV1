@@ -1,13 +1,11 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::API
-  SECRETS = 'my$ecretK3y'
+  SECRETS = 'my$ecretK3y'.freeze
 
   def user?(user)
     if user
       true
     else
-      render json: { error: 'Wrong token!' }
+      render json: { error: 'Wrong token!' }, status: :unprocessable_entity
     end
   end
 
@@ -19,9 +17,21 @@ class ApplicationController < ActionController::API
       user = User.find(user_id)
       user?(user)
     else
-      render json: { error: 'Missing token!' }
+      render json: { error: 'Missing token!' }, status: :unprocessable_entity
     end
   end
+  # rubocop:disable Style/GuardClause
+
+  def current_user
+    token = request.headers[:token]
+    if token
+      decoded_token = decrypt(token)
+      user_id = decoded_token[0]['user_id']
+      User.find(user_id)
+    end
+  end
+
+  # rubocop:enable Style/GuardClause
 
   def current_user
     token = request.headers[:token]
