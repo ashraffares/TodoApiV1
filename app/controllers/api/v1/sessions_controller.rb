@@ -7,7 +7,7 @@ module Api
           token = encrypt({ user_id: user.id })
           render json: { token: token }, status: :ok
         else
-          render json: { error: 'invalid user or password' }, status: :unprocessable_entity
+          render json: { error: ['invalid user or password'] }, status: :unprocessable_entity
         end
       end
 
