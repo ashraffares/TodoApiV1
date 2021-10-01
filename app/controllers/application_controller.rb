@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
     if user
       true
     else
-      render json: { error: 'Wrong token!' }
+      render json: { error: 'Wrong token!' }, status: :unprocessable_entity
     end
   end
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
       user = User.find(user_id)
       user?(user)
     else
-      render json: { error: 'Missing token!' }
+      render json: { error: 'Missing token!' }, status: :unprocessable_entity
     end
   end
   # rubocop:disable Style/GuardClause
