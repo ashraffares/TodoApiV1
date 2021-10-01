@@ -9,6 +9,8 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def token
+
   def auth
     token = request.headers[:token]
     if token
