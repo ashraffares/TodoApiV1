@@ -2,7 +2,7 @@
 
 class ErrorsController < ApplicationController
   def not_found
-    render json: { errors: '404 Not Found Please make sure your in the right route' }
+    render json: { errors: '404 Not Found Please make sure your in the right route' }, status: 404
   end
 
   def internal_server_error
@@ -14,6 +14,6 @@ class ErrorsController < ApplicationController
           { LinkedIn: 'https://www.linkedin.com/in/faresashraf/' },
           { Github: 'https://github.com/ashraffares' },
           { Email: 'ashraffares090@gmail.com' }
-        ] }
+        ] }, status: 500
   end
 end
