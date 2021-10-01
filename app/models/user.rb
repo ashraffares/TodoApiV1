@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
   validates :email, presence: true, format: { with: /\A(.+)@(.+)\z/, message: 'Email invalid' }, uniqueness:
@@ -8,4 +10,6 @@ class User < ApplicationRecord
     message: 'must be at least 6 characters and include one number and one letter.',
     multiline: true
   }
+
+  has_many :todos
 end
