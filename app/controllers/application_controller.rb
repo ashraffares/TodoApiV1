@@ -33,15 +33,6 @@ class ApplicationController < ActionController::API
 
   # rubocop:enable Style/GuardClause
 
-  def current_user
-    token = request.headers[:token]
-    if token
-      decoded_token = decrypt(token)
-      user_id = decoded_token[0]['user_id']
-      User.find(user_id)
-    end
-  end
-
   def encrypt(payload)
     JWT.encode payload, SECRETS, 'HS256'
   end
