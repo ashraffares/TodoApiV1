@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  SECRETS = 'my$ecretK3y'.freeze
+  SECRETS = '000111$$&&@@##**11abcdefABCDEF'.freeze
 
   def user?(user)
     if user
