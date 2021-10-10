@@ -1,8 +1,13 @@
+![TodoApi (1)](https://user-images.githubusercontent.com/37639594/136699487-73e8dcda-de4a-4609-aa34-d7ed026ab8c2.png)
+
 ## TodoApiV1
 its rails API with JWT-TOKEN authentication user can sign in and do any of the CRUD operations.
 
 ## Built With
-- rails API
+- rails
+- Ruby
+- Rspec
+- Bootstrap
 
 ## Live link & and for more information about how to use it look to the main page.
  [Todo API App](https://vast-eyrie-23535.herokuapp.com/).
