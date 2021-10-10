@@ -1,101 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <title>TodoApi</title>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <%= link_to 'TodoApi', root_path, class: 'navbar-brand' %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    </ul>
-  </div>
-</nav>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+  </script>
+  <title>TodoApi</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%= link_to 'TodoApi', root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+    </div>
+  </nav>
 
   <header class="container-fluid text-center bg-primary text-white">
     <h1 class="display-1">TodoAPI</h1>
     <p class="display-5">The RESTful TodoAPI.</p>
     <div class="text-center bg-dark text-white p-3 rounded">
-    <p class="lead font-weight-bold">TodoAPI everthing you will ever need in one place,</p>
-    <p class="lead font-weight-bold">easily accessible through a modern RESTful API.</p> 
-  </div>
+      <p class="lead font-weight-bold">TodoAPI everthing you will ever need in one place,</p>
+      <p class="lead font-weight-bold">easily accessible through a modern RESTful API.</p>
+    </div>
   </header>
   <main class="p-3 bg-dark">
     <hr class="bg-white">
     <span class="lead text-white">
-       BaseUrl:
+      BaseUrl:
       <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/">"https://vast-eyrie-23535.herokuapp.com/api/v1/"</a>
     </span>
     <div class=" text-white p-3">
-    <h6>Login & register example</h6>
-    <pre>
-        url: <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/registeration">BaseUrl/registeration</a><br/>
-        method: 'post',<br>
-        data: {<br/>
-            email: "example@gmail.com",<br/>
-            passowrd: "Example0011$$&&",<br/>
-            password_confirmation: "Example0011$$&&"<br/>
-        }<br/>
+      <h6 class="text-center"><u>Login & register</u></h6>
+      <h6>Register Example:</h6>
+      <details>
+        <summary>Register expected data</summary>
+        <pre>
+          data: {
 
-        response {<br/>
-            token: tokenExample,<br/>
-        }<br/>
-    </pre>
-    <hr class="bg-white">
-    <pre>
-        url: <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/registeration">BaseUrl/login</a><br/>
-        method: 'post',<br>
-        data: {<br/>
-            email: "example@gmail.com",<br/>
-            passowrd: "Example0011$$&&"<br/>
-        }<br/>
+            email: "example@gmail.com",
 
-        response {<br/>
-            token: tokenExample,<br/>
-        }<br/>
-    </pre>
+            passowrd: "Example0011$$&&",
+
+            password_confirmation: "Example0011$$&&"
+
+        }
+        </pre>
+      </details>
+      <details>
+        <summary>Register user code snippet JS</summary>
+        <pre>
+            export const RegisterUser = async (obj) => {
+            try {
+              const response = await axios({
+                method: 'post',
+                url: 'https://vast-eyrie-23535.herokuapp.com/api/v1/registeration',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                data: obj,
+              });
+            
+            } catch (error) {
+              error
+            }
+          };
+        </pre>
+      </details>
+
+      <details>
+        <summary>expected output</summary>
+        <pre>
+          response {
+            token: token
+          }
+        </pre>
+      </details>
     </div>
-
-
+    <hr class="bg-white">
 
     <div class=" text-white p-3">
-    <h6>Todos & Items examples</h6>
-    <pre>
-        url: <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/todos">BaseUrl/todos/</a><br/>
-        method: 'get',<br>
-        data: {<br/>
-            user_id: 1,<br/>
-            title: "ExampleTitle",<br/>
-            created_by: "ExampleNoOne"<br/>
-        }<br/>
+      <h6>Login Example:</h6>
+      <details>
+        <summary>Login expected data</summary>
+        <pre>
+          data: {
+  
+            email: "example@gmail.com",
+  
+            passowrd: "Example0011$$&&",
+  
+        }
+        </pre>
+      </details>
+      <details>
+        <summary>Login user code snippet JS</summary>
+        <pre>
+            export const LoginUser = async (obj) => {
+              try {
+                const response = await axios({
+                  method: 'post',
+                  url: 'https://vast-eyrie-23535.herokuapp.com/api/v1/login',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  data: obj,
+                });
+              } catch (error) {
+                error
+              }
+            };
+        </pre>
+      </details>
 
-        header {<br/>
-            token: tokenExample,<br/>
-        }<br/>
-
-        response: []
-
-    </pre>
+      <details>
+        <summary>expected output</summary>
+        <pre>
+          response {
+            token: token
+          }
+        </pre>
+      </details>
+    </div>
+    
     <hr class="bg-white">
-    <pre>
-        url: <a href="https://vast-eyrie-23535.herokuapp.com/api/v1/registeration">BaseUrl/todos/:todo_id/items</a><br/>
-        method: 'get',<br>
-        header {<br/>
-            token: tokenExample,<br/>
-        }<br/>
-        response: []
 
-    </pre>
+    <h6 class="text-center text-white "><u>CURD Operation</u></h6>
+
+    <div class=" text-white p-3">
+      <h6>Todo List Example:</h6>
+      <details>
+        <summary>Todo list code snippet JS</summary>
+        <pre>
+            export const fetchTodoData = async () => {
+              try {
+                const response = await axios.get('https://vast-eyrie-23535.herokuapp.com/api/v1/todos',
+                  {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      token, // You need to proved token
+                    },
+                  });
+              } catch (error) {
+                error
+              }
+            };      
+        </pre>
+      </details>
+
+      <details>
+        <summary>expected output</summary>
+        <pre>
+          todos: []
+        </pre>
+      </details>
+    </div>
+
+    <hr class="bg-white">
+
+    <div class=" text-white p-3">
+      <h6>Post Todo Example:</h6>
+      <details>
+        <summary>Post Todo expected data</summary>
+        <pre>
+        {
+          title: 'example title', // expect string
+          created_by: 'creator', // expect string
+          user_id: 0 //expect number
+        }
+        </pre>
+      </details>
+      <details>
+        <summary>Post Todo code snippet JS</summary>
+        <pre>
+            export const postTodo = async () => {
+              try {
+                const response = await axios({
+                  method: 'post',
+                  url: 'https://vast-eyrie-23535.herokuapp.com/api/v1/todos',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    token, // You need to proved token
+                  },
+                  data: obj,
+                });
+              } catch (error) {
+                error
+              }
+            };   
+        </pre>
+      </details>
+
+      <details>
+        <summary>expected output</summary>
+        <pre>
+          todo: {
+              title: 'example title',
+              created_by: 'creator',
+              user_id: 0
+            }
+        </pre>
+      </details>
+    </div>
+
+    <hr class="bg-white">
+
+    <div class=" text-white p-3">
+      <h6>Delete Todo Example:</h6>
+      <details>
+        <summary>Delete Todo code snippet JS</summary>
+        <pre>
+            // you need to pass todo id and token
+            export const DeleteTodo = (id) => {
+              try {
+                const response = await axios({
+                  method: 'delete',
+                  url: `https://vast-eyrie-23535.herokuapp.com/api/v1/todos/${id}`,
+                  headers: {
+                    'Content-Type': 'application/json',
+                    token, // You need to proved token
+                  },
+                });
+              } catch (error) {
+                error
+              }
+            };
+        </pre>
+      </details>
+
+      <details>
+        <summary>expected output</summary>
+        <pre>
+          { 
+            message: 'Todo has been deleted successfully' 
+          }
+        </pre>
+      </details>
+    </div>
+
+    <hr class="bg-white">
+
+    <div class=" text-white p-3">
+      <h6>Update Todo Example:</h6>
+      <details>
+        <summary>Update Todo code snippet JS</summary>
+        <pre>
+            export const UpdateTodo = async (id, obj) => {
+              // You need Todo id and update Todo object
+              try {
+                const response = await axios({
+                  method: 'put',
+                  url: `https://vast-eyrie-23535.herokuapp.com/api/v1/todos/${id}`,
+                  headers: {
+                    'Content-Type': 'application/json',
+                    token, // You need to proved token
+                  },
+                  data: obj,
+                });
+              } catch (error) {
+                error
+              }
+            };
+        </pre>
+      </details>
+
+      <details>
+        <summary>expected output</summary>
+        <pre>
+          todo: {
+            title: 'updated title',
+            created_by: 'updated creator',
+            user_id: 0
+          }
+        </pre>
+      </details>
+    </div>
+
+    <hr class="bg-white">
+
+    <div class=" text-white p-3">
+      <h6>Get Todo Example:</h6>
+      <details>
+        <summary>Get Todo code snippet JS</summary>
+        <pre>
+            export const GetTodo = async (id) => {
+              try {
+                const response = await axios({
+                  method: 'get',
+                  url: `https://vast-eyrie-23535.herokuapp.com/api/v1/todos/${id}`,
+                  headers: {
+                    'Content-Type': 'application/json',
+                    token, // You need to proved token
+                  },
+                });
+                dispatch({ type: ActionTypes.GET_TODO_SUCCESS, payload: response.data });
+              } catch (error) {
+                error
+              }
+            };
+        </pre>
+      </details>
+
+      <details>
+        <summary>expected output</summary>
+        <pre>
+          todo: {
+            title: 'title',
+            created_by: 'creator',
+            user_id: 0
+          }
+        </pre>
+      </details>
     </div>
   </main>
 </body>
+
 </html>
