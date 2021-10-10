@@ -4,8 +4,8 @@ its rails API with JWT-TOKEN authentication user can sign in and do any of the C
 ## Built With
 - rails API
 
-## Live link
- [Pokemon catalog App](http://faresashraf.me/ReactCapestone/).
+## Live link & and for more information about how to use it look to the main page.
+ [Todo API App](https://vast-eyrie-23535.herokuapp.com/).
 
 ## Getting Started
 To get a local copy up and running follow these simple example steps on the command line.
